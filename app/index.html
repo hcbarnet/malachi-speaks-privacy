@@ -419,6 +419,14 @@
         <span class="tag">Suggest Next Word</span>
       </div>
       <div class="feature">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6.5 10h.01M10.5 10h.01M14.5 10h.01M18 10h.01M8 14h8"/></svg></div>
+        <h3>Type to Speak</h3>
+        <p>A keyboard for someone who can spell what they want to say, speaking in
+        their own voice, with the phrases they save one tap away. Can replace the
+        picture board entirely.</p>
+        <span class="tag">Type to Speak</span>
+      </div>
+      <div class="feature">
         <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
         <h3>Quick Actions & Recently Used</h3>
         <p>Urgent words like "stop" and "help" stay one tap away on every screen; a
@@ -429,6 +437,13 @@
         <h3>Caregiver-gated editing</h3>
         <p>A PIN protects adding, editing, and reordering tiles and categories — the
         board itself stays simple and un-editable for the communicator.</p>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16.5 5.2a3.5 3.5 0 0 1 0 5.6"/><path d="M18 14.4a6.5 6.5 0 0 1 3.5 5.6"/></svg></div>
+        <h3>Profiles</h3>
+        <p>One device, a separate board for each person — their own tiles, voice,
+        settings, and usage log, switched behind the caregiver PIN.</p>
+        <span class="tag">Profiles</span>
       </div>
       <div class="feature">
         <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M12 19V5M20 19v-6"/></svg></div>
@@ -476,6 +491,7 @@
           <a href="#doc-talking">Talking with the board</a>
           <a href="#doc-sentence">Sentence Builder mode</a>
           <a href="#doc-quick">Quick Actions & Recently Used</a>
+          <a href="#doc-type">Type to Speak</a>
         </div>
         <div class="docs-nav-group">
           <span class="docs-nav-title">Caregiver Tools</span>
@@ -483,6 +499,7 @@
           <a href="#doc-editing">Adding & editing tiles</a>
           <a href="#doc-categories">Categories</a>
           <a href="#doc-voice">Voice & display settings</a>
+          <a href="#doc-profiles">Profiles</a>
         </div>
         <div class="docs-nav-group">
           <span class="docs-nav-title">Data & Reporting</span>
@@ -537,8 +554,33 @@
           <p>Both update automatically as the board is used.</p>
         </div>
 
+        <div class="doc-section" id="doc-type">
+          <h3><span class="doc-num">4</span>Type to Speak</h3>
+          <p>For someone who can spell what they want to say, the app can offer a
+          keyboard instead of tiles. Turn on <span class="setting">Type to Speak</span>
+          in Settings under <strong>Interaction Mode</strong>, and a <strong>Type</strong>
+          chip appears at the start of the category row.</p>
+          <ul>
+            <li>Typing something and pressing <strong>Speak</strong> says it in this
+            profile's voice. The words stay in the box afterwards, so pressing Speak
+            again is how you repeat yourself.</li>
+            <li>The bookmark button saves what's in the box as a phrase. Saved
+            phrases sit above the keyboard and speak with one tap — and typing a few
+            letters brings up any saved phrase that matches, so "bath" can fetch a
+            whole sentence.</li>
+            <li>Anything said this session sits under <strong>Just said</strong> and
+            can be said again. It is never written to the device: close the app and
+            it's gone. Only phrases saved on purpose are kept.</li>
+            <li><span class="setting">Hide the Picture Board</span> makes this the
+            whole app for that profile — no tiles, no categories. For someone who
+            reads and writes, especially an adult who lost speech, a board of picture
+            symbols is usually the wrong tool. Caregiver settings stay reachable from
+            the gear in the top corner.</li>
+          </ul>
+        </div>
+
         <div class="doc-section" id="doc-caregiver">
-          <h3><span class="doc-num">4</span>Entering Caregiver Mode</h3>
+          <h3><span class="doc-num">5</span>Entering Caregiver Mode</h3>
           <p>Everything below this point — adding tiles, changing settings — sits
           behind a PIN so the board itself stays simple. Tap the small gear icon in
           the corner of the main screen, then enter the Caregiver PIN. One PIN
@@ -551,7 +593,7 @@
         </div>
 
         <div class="doc-section" id="doc-editing">
-          <h3><span class="doc-num">5</span>Adding & editing tiles</h3>
+          <h3><span class="doc-num">6</span>Adding & editing tiles</h3>
           <p>From Edit Board, tap <strong>Add Tile</strong> under any category (or
           under Quick Actions to add a quick-access tile). Give it a label, and
           optionally a different phrase for it to actually say out loud — a tile
@@ -572,7 +614,7 @@
         </div>
 
         <div class="doc-section" id="doc-categories">
-          <h3><span class="doc-num">6</span>Categories</h3>
+          <h3><span class="doc-num">7</span>Categories</h3>
           <p>Tap <strong>Category</strong> at the bottom of Edit Board to add a new
           topic with its own name and color. Use the "⋯" menu next to any category
           to rename it, change its color, or delete it — deleting a category also
@@ -582,7 +624,7 @@
         </div>
 
         <div class="doc-section" id="doc-voice">
-          <h3><span class="doc-num">7</span>Voice & display settings</h3>
+          <h3><span class="doc-num">8</span>Voice & display settings</h3>
           <p>Pick a voice and adjust how fast or high it sounds, then tap
           <strong>Test Voice</strong> to hear it before committing. Other controls
           worth knowing:</p>
@@ -602,8 +644,31 @@
           </ul>
         </div>
 
+        <div class="doc-section" id="doc-profiles">
+          <h3><span class="doc-num">9</span>Profiles</h3>
+          <p>One device can hold a board for more than one person. Turn on
+          <span class="setting">Multiple Profiles</span> in Settings under
+          <strong>Profiles</strong>. It's off by default, and a device serving one
+          person never has to think about it.</p>
+          <ul>
+            <li>Each profile keeps its own categories, tiles, voice, grid size,
+            quick actions, usage log, and saved phrases. Nothing crosses between
+            them.</li>
+            <li>The caregiver PIN and the automatic backup schedule are shared by
+            the whole device.</li>
+            <li>Adding a profile can start from the standard starter board, or copy
+            a board already set up. A copy brings the tiles and settings across, but
+            not the other person's usage history — that describes how they
+            communicate, not how the board is arranged.</li>
+            <li>Switching lives here, behind the PIN, so the person using the app
+            can't switch away from their own words.</li>
+            <li>Deleting a profile removes its board and its photos for good. The
+            profile in use can't be deleted — switch to another one first.</li>
+          </ul>
+        </div>
+
         <div class="doc-section" id="doc-usage">
-          <h3><span class="doc-num">8</span>Word usage reports</h3>
+          <h3><span class="doc-num">10</span>Word usage reports</h3>
           <p>Settings → <span class="setting">Word Usage</span> shows which tiles
           actually get tapped: an all-time running total for each one, plus 7-day
           and 30-day trends computed <em>per word</em> — not just a board-wide
@@ -618,7 +683,7 @@
         </div>
 
         <div class="doc-section" id="doc-backup">
-          <h3><span class="doc-num">9</span>Backup & Restore</h3>
+          <h3><span class="doc-num">11</span>Backup & Restore</h3>
           <p>One screen in Settings covers moving a board on or off the device:</p>
           <ul>
             <li><strong>Export Board</strong> / <strong>Import Board</strong> — save
@@ -637,7 +702,7 @@
         </div>
 
         <div class="doc-section" id="doc-privacy">
-          <h3><span class="doc-num">10</span>Privacy & data</h3>
+          <h3><span class="doc-num">12</span>Privacy & data</h3>
           <div class="callout privacy">
             <span class="mark">●</span>
             Everything — the board, usage counts, learned word suggestions, backups
