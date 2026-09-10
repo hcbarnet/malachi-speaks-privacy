@@ -279,6 +279,26 @@
   .footer-links { display: flex; gap: 20px; font-size: 0.86rem; font-weight: 700; }
   .footer-links a { text-decoration: none; color: var(--ink); }
   .footer-links a:hover { color: var(--teal); }
+
+  /* ---------- Support ---------- */
+  .support-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+  .support-card {
+    display: flex; align-items: center; gap: 14px; min-width: 236px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 15px 20px; text-decoration: none; color: var(--ink);
+    transition: border-color .15s, transform .15s;
+  }
+  .support-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .support-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .support-mark {
+    width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+    background: var(--accent); color: var(--accent-ink);
+  }
+  .support-mark.cash { background: var(--teal); color: var(--paper-raised); }
+  .support-name { font-weight: 700; font-size: 0.95rem; display: block; }
+  .support-handle { font-family: var(--font-mono); font-size: 0.83rem; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -295,6 +315,7 @@
       <a href="#features">Features</a>
       <a href="#docs">Documentation</a>
       <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
       <a href="https://hcbarnet.github.io/malachi-speaks-privacy/" target="_blank" rel="noopener">Privacy</a>
     </div>
     <a class="nav-cta" href="mailto:huntercbarnett@gmail.com">Contact</a>
@@ -672,6 +693,36 @@
         <div class="faq-a">Android, coming soon to Google Play. An iOS release is
         in progress too.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Support</span>
+      <h2>The app stays free. This part is optional.</h2>
+      <p>There's no subscription, no paid tier, and no ads in Malachi Speaks, and
+      that isn't going to change &mdash; nothing here is held back behind a
+      donation. If the app has been useful to someone in your house and you'd
+      like to put something toward the time that goes into it, these are the two
+      ways to do that.</p>
+    </div>
+    <div class="support-grid">
+      <a class="support-card" href="https://venmo.com/u/Hunter-Barnett-7" target="_blank" rel="noopener">
+        <span class="support-mark" aria-hidden="true">V</span>
+        <span>
+          <span class="support-name">Venmo</span>
+          <span class="support-handle">@Hunter-Barnett-7</span>
+        </span>
+      </a>
+      <a class="support-card" href="https://cash.app/$huntercaleb98" target="_blank" rel="noopener">
+        <span class="support-mark cash" aria-hidden="true">$</span>
+        <span>
+          <span class="support-name">Cash App</span>
+          <span class="support-handle">$huntercaleb98</span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
