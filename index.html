@@ -89,8 +89,11 @@
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
+    /* A real gap, so the links and the Contact button can never end up
+       touching — which is how they came to overlap on a tablet. */
+    gap: 20px;
   }
-  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; text-decoration: none; }
+  .brand { flex-shrink: 0; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; text-decoration: none; }
   .brand-mark {
     width: 30px; height: 30px; border-radius: 9px;
     background: var(--accent); color: var(--accent-ink);
@@ -98,15 +101,30 @@
     font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem;
     flex-shrink: 0;
   }
-  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.92rem; font-weight: 600; }
+  /* The gap shrinks with the viewport rather than holding 28px until the
+     whole row stops fitting. The six links plus the brand and the button
+     needed 784px, but the links only hid below 760px — so between those
+     two numbers the row overflowed and the Contact button sat on top of
+     the last link. Reported on an Android tablet, where the fallback font
+     renders wider than it does here and the squeeze starts sooner. */
+  .nav-links {
+    display: flex; align-items: center; font-weight: 600;
+    gap: clamp(14px, 2.2vw, 28px); font-size: 0.92rem;
+    min-width: 0;
+  }
   .nav-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s; }
   .nav-links a:hover { color: var(--ink); }
   .nav-cta {
     background: var(--ink); color: var(--paper);
     padding: 9px 18px; border-radius: 8px; text-decoration: none;
     font-size: 0.88rem; font-weight: 700;
+    /* Neither of these may be squashed to make room: a half-width
+       Contact button is what overlapping looks like from the other side. */
+    flex-shrink: 0; white-space: nowrap;
   }
-  @media (max-width: 760px) { .nav-links { display: none; } }
+  /* Hidden well before the row actually runs out of room, so a device
+     whose fonts render a little wider still has slack. */
+  @media (max-width: 900px) { .nav-links { display: none; } }
 
   /* ---------- Hero ---------- */
   .hero { padding: 76px 0 64px; }
