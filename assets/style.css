@@ -566,12 +566,6 @@
     font-weight: 700; color: var(--accent-text);
   }
 
-  /* Sits directly under the opening paragraph, before the buttons, so who
-     made this is part of the first thing read rather than a footnote
-     after the calls to action. */
-  .hero-maker { margin-top: 16px; }
-  .hero-maker a { color: var(--teal); font-weight: 600; }
-
   /* ---------- Screenshot gallery ---------- */
   /* A row that scrolls with snap on a phone and becomes a grid when there
      is room. No lightbox and no carousel script: the images are the point,
