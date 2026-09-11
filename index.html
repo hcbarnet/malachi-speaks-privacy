@@ -114,6 +114,24 @@
   }
   .nav-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s; }
   .nav-links a:hover { color: var(--ink); }
+  /* The nav mixes two kinds of link: five that scroll this page, two that
+     leave it. Styled identically they read as one list and the jump to a
+     different page comes as a surprise, so the two groups are separated
+     and the ones that navigate carry a mark. */
+  .nav-divider {
+    width: 1px; height: 18px; background: var(--line); flex-shrink: 0;
+  }
+  .nav-away::after {
+    content: "↗"; font-size: 0.78em; margin-left: 3px;
+    vertical-align: 1px; opacity: 0.65;
+  }
+
+  .menu-heading {
+    font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); padding: 10px 14px 4px;
+  }
+  .nav-menu-panel .menu-heading:first-child { padding-top: 4px; }
   .nav-cta {
     background: var(--ink); color: var(--paper);
     padding: 9px 18px; border-radius: 8px; text-decoration: none;
@@ -365,6 +383,22 @@
   .footer-links a { text-decoration: none; color: var(--ink); }
   .footer-links a:hover { color: var(--teal); }
 
+  /* ---------- About teaser ---------- */
+  #about-teaser { border-top: 1px solid var(--line); }
+  .about-teaser-card {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    background: var(--paper-raised); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 16px; padding: 32px 34px;
+  }
+  .about-teaser-card h2 { font-size: 1.5rem; font-weight: 600; }
+  .about-teaser-card p {
+    margin-top: 12px; color: var(--ink-soft); max-width: 58ch;
+    font-size: 0.98rem;
+  }
+  .about-teaser-card .btn { flex-shrink: 0; }
+
   /* ---------- Support ---------- */
   .support-grid { display: flex; flex-wrap: wrap; gap: 16px; }
   .support-card {
@@ -400,9 +434,10 @@
       <a href="#features">Features</a>
       <a href="#docs">Documentation</a>
       <a href="#faq">FAQ</a>
-      <a href="/about/">About</a>
+      <a href="#about-teaser">About</a>
       <a href="#support">Support</a>
-      <a href="/privacy/" target="_blank" rel="noopener">Privacy</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a class="nav-away" href="/privacy/">Privacy</a>
     </div>
     <div class="nav-right">
       <a class="nav-cta" href="mailto:hbarnett@malachispeaks.com">Contact</a>
@@ -412,12 +447,15 @@
           <span class="burger-label">Menu</span>
         </summary>
         <div class="nav-menu-panel">
+          <span class="menu-heading">On this page</span>
           <a href="#overview">Overview</a>
           <a href="#features">Features</a>
           <a href="#docs">Documentation</a>
           <a href="#faq">FAQ</a>
-          <a href="/about/">About</a>
+          <a href="#about-teaser">About</a>
           <a href="#support">Support</a>
+          <span class="menu-heading">More</span>
+          <a href="/about/">The full story</a>
           <a href="/privacy/">Privacy Policy</a>
           <a class="menu-cta" href="mailto:hbarnett@malachispeaks.com">Contact</a>
         </div>
@@ -1068,6 +1106,23 @@
         me a note</a></strong> and say so. That's the whole measure I'm going
         by.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-teaser">
+  <div class="wrap">
+    <div class="about-teaser-card">
+      <div>
+        <span class="kicker">Who makes this</span>
+        <h2>One person, not a company.</h2>
+        <p>Malachi Speaks is written and maintained by Hunter Barnett, on
+        evenings and weekends, for his brother. No office, no investors, no
+        plan to sell it. Email reaches the person who wrote the code &mdash;
+        though replies can take a few days, and that trade-off is worth
+        knowing before you rely on it.</p>
+      </div>
+      <a class="btn btn-primary" href="/about/">Read the full story &rarr;</a>
     </div>
   </div>
 </section>
