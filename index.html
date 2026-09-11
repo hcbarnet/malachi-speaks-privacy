@@ -136,7 +136,12 @@
   /* A native <details>, so the menu opens with no JavaScript at all. The
      small script at the end of the page only closes it after a tap. */
   .nav-menu { position: relative; display: none; }
-  @media (max-width: 1000px) { .nav-menu { display: block; } }
+  /* Wherever the menu exists, it holds everything — including Contact.
+     One place to look beats a button in the row and a list beside it. */
+  @media (max-width: 1000px) {
+    .nav-menu { display: block; }
+    .nav-cta { display: none; }
+  }
 
   .nav-menu > summary {
     list-style: none; cursor: pointer; user-select: none;
@@ -175,18 +180,18 @@
     font-size: 0.95rem; font-weight: 600; color: var(--ink);
   }
   .nav-menu-panel a:hover { background: var(--line-soft); }
+  /* The one action in a list of destinations, so it is set apart. */
+  .menu-cta {
+    margin-top: 6px; padding-top: 14px;
+    border-top: 1px solid var(--line); border-radius: 0 0 8px 8px;
+    color: var(--accent-text);
+  }
 
   @media (max-width: 400px) { .burger-label { display: none; } }
 
-  /* The row needs 387px with the wordmark, which is over budget on a 375
-     or 360 phone and well over on a 320. The wordmark is the widest part
-     and the least load-bearing — the mark alone still says whose site
-     this is, and it buys back ~120px so Contact can stay a single tap
-     rather than being folded into the menu. */
-  @media (max-width: 430px) {
-    .brand-text { display: none; }
-    .nav-inner { gap: 12px; }
-  }
+  /* The wordmark stays: with Contact in the menu the row is only the
+     brand and the menu button, which fits a 320 phone with room to
+     spare. It was hidden while all three had to share 375px. */
 
   /* ---------- Hero ---------- */
   .hero { padding: 76px 0 64px; }
@@ -414,7 +419,7 @@
           <a href="/about/">About</a>
           <a href="#support">Support</a>
           <a href="/privacy/">Privacy Policy</a>
-          <a href="mailto:hbarnett@malachispeaks.com">Contact</a>
+          <a class="menu-cta" href="mailto:hbarnett@malachispeaks.com">Contact</a>
         </div>
       </details>
     </div>
