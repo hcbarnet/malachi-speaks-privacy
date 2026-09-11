@@ -615,13 +615,6 @@
     #in-action { display: none; }
   }
 
-  .shots-note {
-    margin-top: 36px; padding: 22px 26px;
-    background: var(--paper-raised); border: 1px solid var(--line);
-    border-left: 3px solid var(--teal); border-radius: 14px;
-  }
-  .shots-note p { color: var(--ink-soft); font-size: 0.96rem; max-width: 76ch; }
-  .shots-note strong { color: var(--ink); }
 
   /* The email is a link inside footer prose, which is set in the muted
      ink — it needs to be visibly a link without shouting. */
