@@ -216,16 +216,8 @@
   .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } }
 
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal);
-    background: var(--teal-soft); border: 1px solid color-mix(in srgb, var(--teal) 35%, transparent);
-    padding: 6px 12px; border-radius: 100px; margin-bottom: 22px;
-  }
-  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-
   .hero h1 {
+    margin-top: 4px;
     font-size: clamp(2.6rem, 5vw, 3.7rem);
     font-weight: 600; line-height: 1.04; letter-spacing: -0.01em;
   }
@@ -468,7 +460,6 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow"><span class="dot"></span>Free · Private · On-device AAC</span>
       <h1>A voice that<br>learns <em>their</em> words.</h1>
       <p class="hero-sub">
         Malachi Speaks is a free augmentative and alternative communication (AAC) app —
