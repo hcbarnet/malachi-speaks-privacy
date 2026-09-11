@@ -300,21 +300,6 @@
   .footer-links a { text-decoration: none; color: var(--ink); }
   .footer-links a:hover { color: var(--teal); }
 
-  /* ---------- Who makes this ---------- */
-  .maker-grid {
-    display: grid; gap: 18px; margin-top: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-  .maker-card {
-    background: var(--paper-raised); border: 1px solid var(--line);
-    border-radius: 14px; padding: 24px 26px;
-  }
-  .maker-card h3 {
-    font-family: var(--font-display); font-size: 1.02rem; font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .maker-card p { font-size: 0.94rem; color: var(--ink-soft); line-height: 1.65; }
-
   /* ---------- Support ---------- */
   .support-grid { display: flex; flex-wrap: wrap; gap: 16px; }
   .support-card {
@@ -348,9 +333,9 @@
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#features">Features</a>
-      <a href="#docs">Docs</a>
+      <a href="#docs">Documentation</a>
       <a href="#faq">FAQ</a>
-      <a href="#maker">Who makes this</a>
+      <a href="/about/">About</a>
       <a href="#support">Support</a>
       <a href="/privacy/" target="_blank" rel="noopener">Privacy</a>
     </div>
@@ -375,7 +360,7 @@
       </div>
       <p class="hero-note">Coming soon to Google Play</p>
       <p class="hero-note">Made by one person, not a company &mdash;
-        <a href="#maker" style="color:inherit;">here's what that means</a></p>
+        <a href="/about/" style="color:inherit;">about the app and me</a></p>
     </div>
 
     <div>
@@ -1004,48 +989,6 @@
   </div>
 </section>
 
-<section id="maker">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Who makes this</span>
-      <h2>One person. Not a company, not a startup, not a team.</h2>
-      <p>Malachi Speaks is written and maintained by Hunter Barnett, on evenings
-      and weekends, for his brother. There is no office behind it, no investors,
-      and no plan to sell it. That is worth saying plainly, because you may be
-      choosing the app someone in your family will use to speak for years, and
-      you should know who is on the other end of it.</p>
-    </div>
-
-    <div class="maker-grid">
-      <div class="maker-card">
-        <h3>What that gets you</h3>
-        <p>Email goes to a person who wrote the code, not a ticket queue. There
-        are no ads and no data collection, partly because there is no company
-        that would benefit from either. Features ship when a real communicator
-        needs them &mdash; most of what is in the app exists because Malachi
-        needed it that week.</p>
-      </div>
-      <div class="maker-card">
-        <h3>What it costs you</h3>
-        <p>Replies can take a few days. There is no phone line and no
-        around-the-clock support. Bugs get fixed as fast as one person can fix
-        them, which is sometimes fast and sometimes not. If that is not enough
-        for your situation, a funded AAC app may genuinely serve you better, and
-        that is a reasonable choice to make.</p>
-      </div>
-      <div class="maker-card">
-        <h3>If I ever stop</h3>
-        <p>This is the fair question to ask about any one-person project, so
-        here is the honest answer. Your board is not held hostage to it. Nothing
-        lives on a server, backups are files on your own device, and the board
-        exports to Open Board Format &mdash; the same format other AAC apps
-        read. If this app disappeared tomorrow, the board you built would open
-        somewhere else.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="support">
   <div class="wrap">
     <div class="section-head">
@@ -1086,6 +1029,7 @@
       welcome by email, and they reach me directly.</p>
     </div>
     <div class="footer-links">
+      <a href="/about/">About</a>
       <a href="mailto:hbarnett@malachispeaks.com">Contact</a>
       <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>
       <a href="#docs">Documentation</a>
