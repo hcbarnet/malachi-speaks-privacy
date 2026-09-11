@@ -1,0 +1,567 @@
+
+  :root {
+    --paper: #F5EEDF;
+    --paper-raised: #FBF6EC;
+    --ink: #2A2440;
+    --ink-soft: #5B5470;
+    --accent: #E07B39;
+    --accent-text: #A6551C;
+    --accent-ink: #FBF6EC;
+    --teal: #2F6B5A;
+    --teal-soft: #E4EEE9;
+    --line: #E1D5B8;
+    --line-soft: #EBE1CB;
+    --card: #FFFDF6;
+    --shadow: 15 30% 20%;
+
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Karla", -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1C1826;
+      --paper-raised: #241F32;
+      --ink: #F0E9D8;
+      --ink-soft: #B8AFCB;
+      --accent: #EE9159;
+      --accent-text: #F0A166;
+      --accent-ink: #2B1608;
+      --teal: #6FBBA3;
+      --teal-soft: #24352F;
+      --line: #392F52;
+      --line-soft: #2C2540;
+      --card: #221D30;
+      --shadow: 260 40% 3%;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1C1826;
+    --paper-raised: #241F32;
+    --ink: #F0E9D8;
+    --ink-soft: #B8AFCB;
+    --accent: #EE9159;
+    --accent-text: #F0A166;
+    --accent-ink: #2B1608;
+    --teal: #6FBBA3;
+    --teal-soft: #24352F;
+    --line: #392F52;
+    --line-soft: #2C2540;
+    --card: #221D30;
+    --shadow: 260 40% 3%;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; margin: 0; color: var(--ink); }
+  p { margin: 0; }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    /* A real gap, so the links and the Contact button can never end up
+       touching — which is how they came to overlap on a tablet. */
+    gap: 20px;
+  }
+  .brand { flex-shrink: 0; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; text-decoration: none; }
+  .brand-mark {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: var(--accent); color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-weight: 500; font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  /* The gap shrinks with the viewport rather than holding 28px until the
+     whole row stops fitting. The six links plus the brand and the button
+     needed 784px, but the links only hid below 760px — so between those
+     two numbers the row overflowed and the Contact button sat on top of
+     the last link. Reported on an Android tablet, where the fallback font
+     renders wider than it does here and the squeeze starts sooner. */
+  .nav-links {
+    display: flex; align-items: center; font-weight: 600;
+    gap: clamp(14px, 2.2vw, 28px); font-size: 0.92rem;
+    min-width: 0;
+  }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  /* The nav mixes two kinds of link: five that scroll this page, two that
+     leave it. Styled identically they read as one list and the jump to a
+     different page comes as a surprise, so the two groups are separated
+     and the ones that navigate carry a mark. */
+  .nav-divider {
+    width: 1px; height: 18px; background: var(--line); flex-shrink: 0;
+  }
+  .nav-away::after {
+    content: "↗"; font-size: 0.78em; margin-left: 3px;
+    vertical-align: 1px; opacity: 0.65;
+  }
+
+  .menu-heading {
+    font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); padding: 10px 14px 4px;
+  }
+  .nav-menu-panel .menu-heading:first-child { padding-top: 4px; }
+  .nav-cta {
+    background: var(--ink); color: var(--paper);
+    padding: 9px 18px; border-radius: 8px; text-decoration: none;
+    font-size: 0.88rem; font-weight: 700;
+    /* Neither of these may be squashed to make room: a half-width
+       Contact button is what overlapping looks like from the other side. */
+    flex-shrink: 0; white-space: nowrap;
+  }
+  /* Hidden well before the row actually runs out of room, so a device
+     whose fonts render a little wider still has slack. Raised from 900
+     when a seventh link was added — the number has to move with the
+     content, which is the trap the original 760 fell into.
+     Below this the menu button takes over: hiding the links without
+     replacing them left About and the Privacy Policy reachable only from
+     the footer, which is not navigation. */
+  @media (max-width: 1000px) { .nav-links { display: none; } }
+
+  .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+  /* A native <details>, so the menu opens with no JavaScript at all. The
+     small script at the end of the page only closes it after a tap. */
+  .nav-menu { position: relative; display: none; }
+  /* Wherever the menu exists, it holds everything — including Contact.
+     One place to look beats a button in the row and a list beside it. */
+  @media (max-width: 1000px) {
+    .nav-menu { display: block; }
+    .nav-cta { display: none; }
+  }
+
+  .nav-menu > summary {
+    list-style: none; cursor: pointer; user-select: none;
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 14px 8px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--paper-raised);
+    font-size: 0.86rem; font-weight: 700; color: var(--ink);
+  }
+  .nav-menu > summary::-webkit-details-marker { display: none; }
+  .nav-menu > summary:hover { border-color: var(--accent); }
+
+  /* Three bars drawn from one element, so there is no icon to load. */
+  .burger {
+    width: 16px; height: 2px; border-radius: 2px; background: currentColor;
+    position: relative; display: block; flex-shrink: 0;
+  }
+  .burger::before, .burger::after {
+    content: ""; position: absolute; left: 0; width: 16px; height: 2px;
+    border-radius: 2px; background: currentColor;
+  }
+  .burger::before { top: -5px; }
+  .burger::after { top: 5px; }
+  .nav-menu[open] .burger { background: transparent; }
+  .nav-menu[open] .burger::before { top: 0; transform: rotate(45deg); }
+  .nav-menu[open] .burger::after { top: 0; transform: rotate(-45deg); }
+
+  .nav-menu-panel {
+    position: absolute; right: 0; top: calc(100% + 10px);
+    min-width: 208px; padding: 8px;
+    display: flex; flex-direction: column;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; box-shadow: 0 14px 34px -12px rgba(0,0,0,0.3);
+  }
+  .nav-menu-panel a {
+    padding: 11px 14px; border-radius: 8px; text-decoration: none;
+    font-size: 0.95rem; font-weight: 600; color: var(--ink);
+  }
+  .nav-menu-panel a:hover { background: var(--line-soft); }
+  /* The one action in a list of destinations, so it is set apart. */
+  .menu-cta {
+    margin-top: 6px; padding-top: 14px;
+    border-top: 1px solid var(--line); border-radius: 0 0 8px 8px;
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 400px) { .burger-label { display: none; } }
+
+  /* The wordmark stays: with Contact in the menu the row is only the
+     brand and the menu button, which fits a 320 phone with room to
+     spare. It was hidden while all three had to share 375px. */
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 76px 0 64px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } }
+
+  .hero h1 {
+    margin-top: 4px;
+    font-size: clamp(2.6rem, 5vw, 3.7rem);
+    font-weight: 600; line-height: 1.04; letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent-text); }
+  .hero-sub {
+    margin-top: 22px; font-size: 1.14rem; color: var(--ink-soft);
+    max-width: 46ch; line-height: 1.65;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 22px; border-radius: 9px; font-weight: 700; font-size: 0.96rem;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { box-shadow: 0 8px 20px -8px hsl(var(--shadow) / 0.5); }
+  .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ink-soft); }
+
+  .hero-note { margin-top: 20px; font-size: 0.86rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+
+  /* ---------- Hero screenshot ---------- */
+  .board-mock {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 10px;
+    box-shadow: 0 24px 60px -30px hsl(var(--shadow) / 0.45);
+    max-width: 360px; margin: 0 auto;
+  }
+  .board-mock img {
+    display: block; width: 100%; border-radius: 13px;
+    /* The real screenshot is a light UI regardless of site theme — same
+       reasoning as the app itself, which has no dark mode of its own. */
+  }
+  .shot-caption {
+    text-align: center; font-size: 0.78rem; color: var(--ink-soft);
+    margin-top: 12px; font-family: var(--font-mono);
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+  .gallery-shot {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 10px; box-shadow: 0 20px 45px -28px hsl(var(--shadow) / 0.4);
+  }
+  .gallery-shot img { display: block; width: 100%; border-radius: 11px; }
+  .gallery-text h3 { font-size: 1.2rem; font-weight: 700; font-family: var(--font-body); margin-bottom: 10px; }
+  .gallery-text p { color: var(--ink-soft); font-size: 0.96rem; line-height: 1.6; }
+  .gallery-col { display: flex; flex-direction: column; gap: 18px; }
+  @media (max-width: 760px) { .gallery-col { order: -1; } }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .kicker {
+    font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent-text); margin-bottom: 12px; display: block;
+  }
+  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; }
+  .section-head p { margin-top: 14px; font-size: 1.05rem; color: var(--ink-soft); }
+
+  /* ---------- Feature grid ---------- */
+  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  @media (max-width: 860px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .feature-grid { grid-template-columns: 1fr; } }
+  .feature {
+    background: var(--card); padding: 28px 26px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .feature .icon {
+    width: 38px; height: 38px; border-radius: 10px; background: var(--line-soft);
+    display: flex; align-items: center; justify-content: center; color: var(--teal);
+  }
+  .feature h3 { font-size: 1.05rem; font-weight: 700; font-family: var(--font-body); }
+  .feature p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+  .feature .tag {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-soft);
+    background: var(--paper-raised); border: 1px solid var(--line); padding: 2px 8px;
+    border-radius: 100px; align-self: flex-start; margin-top: -2px;
+  }
+
+  /* ---------- Stats ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: 1fr; } }
+  .stat .num { font-family: var(--font-display); font-size: 2.6rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat .num span { color: var(--accent-text); }
+  .stat .label { margin-top: 6px; font-size: 0.9rem; color: var(--ink-soft); max-width: 24ch; }
+
+  .quote-block {
+    margin-top: 56px; padding: 32px 36px; background: var(--paper-raised);
+    border-left: 3px solid var(--accent); border-radius: 4px 14px 14px 4px;
+  }
+  .quote-block p { font-family: var(--font-display); font-size: 1.28rem; font-style: italic; line-height: 1.5; color: var(--ink); }
+  .quote-block cite { display: block; margin-top: 14px; font-family: var(--font-body); font-style: normal; font-size: 0.86rem; color: var(--ink-soft); font-weight: 600; }
+
+  /* ---------- Docs ---------- */
+  #docs { padding-top: 84px; }
+  .docs-layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .docs-layout { grid-template-columns: 1fr; } }
+
+  .docs-nav { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 2px; }
+  @media (max-width: 860px) { .docs-nav { position: static; flex-direction: row; flex-wrap: wrap; margin-bottom: 8px; } }
+  .docs-nav-group { margin-bottom: 18px; }
+  .docs-nav-title { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 8px; display: block; }
+  .docs-nav a {
+    display: block; padding: 6px 10px; margin-left: -10px; border-radius: 7px;
+    font-size: 0.89rem; color: var(--ink-soft); text-decoration: none; font-weight: 600;
+  }
+  .docs-nav a:hover { background: var(--line-soft); color: var(--ink); }
+
+  .doc-section { margin-bottom: 52px; scroll-margin-top: 84px; }
+  .doc-section h3 {
+    font-size: 1.28rem; font-weight: 600; padding-bottom: 14px; margin-bottom: 20px;
+    border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px;
+  }
+  .doc-num {
+    font-family: var(--font-mono); font-size: 0.78rem; color: var(--teal);
+    background: var(--teal-soft); width: 26px; height: 26px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .doc-section p { color: var(--ink-soft); margin-bottom: 14px; max-width: 68ch; }
+  .doc-section p:last-child { margin-bottom: 0; }
+  .doc-section strong { color: var(--ink); font-weight: 700; }
+  .doc-section ul, .doc-section ol { margin: 0 0 14px; padding-left: 22px; color: var(--ink-soft); max-width: 66ch; }
+  .doc-section li { margin-bottom: 8px; line-height: 1.55; }
+  .doc-section li::marker { color: var(--teal); font-weight: 700; }
+  .setting {
+    font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink);
+    background: var(--paper-raised); border: 1px solid var(--line);
+    padding: 1px 7px; border-radius: 5px; white-space: nowrap;
+  }
+  .callout {
+    background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; margin: 18px 0; font-size: 0.92rem; color: var(--ink-soft);
+    display: flex; gap: 12px;
+  }
+  .callout .mark { color: var(--accent-text); font-weight: 700; flex-shrink: 0; font-family: var(--font-mono); }
+  .callout.privacy { border-color: color-mix(in srgb, var(--teal) 40%, var(--line)); }
+  .callout.privacy .mark { color: var(--teal); }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 760px; }
+  .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; }
+  .faq-item:first-child { padding-top: 0; }
+  .faq-q { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; margin-bottom: 10px; }
+  .faq-a { color: var(--ink-soft); font-size: 0.96rem; max-width: 62ch; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 48px 0 60px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
+  .footer-brand { display: flex; align-items: center; gap: 14px; }
+  .footer-inner p { font-size: 0.85rem; color: var(--ink-soft); max-width: 40ch; line-height: 1.6; }
+  .footer-links { display: flex; gap: 20px; font-size: 0.86rem; font-weight: 700; }
+  .footer-links a { text-decoration: none; color: var(--ink); }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ---------- About teaser ---------- */
+  #about-teaser { border-top: 1px solid var(--line); }
+  .about-teaser-card {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+    background: var(--paper-raised); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 16px; padding: 32px 34px;
+  }
+  .about-teaser-card h2 { font-size: 1.5rem; font-weight: 600; }
+  .about-teaser-card p {
+    margin-top: 12px; color: var(--ink-soft); max-width: 58ch;
+    font-size: 0.98rem;
+  }
+  .about-teaser-card .btn { flex-shrink: 0; }
+
+  /* ---------- Support ---------- */
+  .support-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+  .support-card {
+    display: flex; align-items: center; gap: 14px; min-width: 236px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 15px 20px; text-decoration: none; color: var(--ink);
+    transition: border-color .15s, transform .15s;
+  }
+  .support-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .support-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .support-mark {
+    width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+    background: var(--accent); color: var(--accent-ink);
+  }
+  .support-mark.cash { background: var(--teal); color: var(--paper-raised); }
+  .support-name { font-weight: 700; font-size: 0.95rem; display: block; }
+  .support-handle { font-family: var(--font-mono); font-size: 0.83rem; color: var(--ink-soft); }
+
+  /* ---------- Hero ---------- */
+  header.hero { padding: 68px 0 8px; }
+  .kicker {
+    font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent-text);
+    margin-bottom: 16px; display: block;
+  }
+  h1 { font-size: clamp(2.1rem, 5.2vw, 3.1rem); font-weight: 600; line-height: 1.12; }
+  .lede {
+    margin-top: 24px; font-size: 1.12rem; line-height: 1.62;
+    color: var(--ink-soft); max-width: 56ch;
+  }
+  /* A rule that reads as a signature stroke rather than a divider. */
+  .lede::before {
+    content: ""; display: block; width: 54px; height: 3px; border-radius: 2px;
+    background: var(--accent); margin-bottom: 24px;
+  }
+
+  main { padding-bottom: 40px; }
+  .about-section { margin-top: 56px; scroll-margin-top: 80px; }
+  .about-section h2 {
+    font-size: 1.32rem; font-weight: 600; padding-bottom: 12px; margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .about-section p { color: var(--ink-soft); margin-bottom: 14px; max-width: 66ch; }
+  .about-section p:last-child { margin-bottom: 0; }
+
+
+  /* ---------- The honest three ---------- */
+  /* Three across where they fit, one across where they don't — never two
+     with a third stranded on its own row, which is what 240px gave at this
+     column width. */
+  .honest-grid {
+    display: grid; gap: 16px; margin-top: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  }
+  @media (max-width: 700px) { .honest-grid { grid-template-columns: 1fr; } }
+  .honest-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 22px 24px 24px;
+    /* The top edge carries the meaning: what you gain, what it costs, and
+       the question nobody likes being asked. */
+    border-top: 3px solid var(--line);
+  }
+  .honest-card.good { border-top-color: var(--teal); }
+  .honest-card.cost { border-top-color: var(--accent); }
+  .honest-card.stop { border-top-color: var(--ink-soft); }
+  .honest-label {
+    display: block; font-family: var(--font-mono); font-size: 0.7rem;
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .honest-card p { font-size: 0.93rem; line-height: 1.62; margin: 0; }
+
+
+  /* ---------- Facts ---------- */
+  .facts { margin: 4px 0 0; display: grid; gap: 0; }
+  .facts > div {
+    display: flex; flex-wrap: wrap; gap: 4px 18px;
+    padding: 13px 0; border-bottom: 1px solid var(--line-soft);
+  }
+  .facts > div:last-child { border-bottom: 0; }
+  .facts dt {
+    font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--ink-soft); min-width: 118px;
+    padding-top: 3px;
+  }
+  .facts dd { margin: 0; font-weight: 600; color: var(--ink); }
+  /* On a narrow screen the long values wrap onto their own line anyway,
+     so half the rows aligned and half didn't. Stack every row instead of
+     letting the content decide row by row. */
+  @media (max-width: 560px) {
+    .facts > div { flex-direction: column; gap: 3px; }
+    .facts dt { min-width: 0; padding-top: 0; }
+  }
+
+
+  /* ---------- Sign-off ---------- */
+  .signoff {
+    margin-top: 60px; padding: 30px 32px;
+    background: var(--teal-soft);
+    border: 1px solid color-mix(in srgb, var(--teal) 32%, transparent);
+    border-radius: 16px;
+  }
+  .signoff p { color: var(--ink); max-width: 60ch; }
+  .signoff-name {
+    margin-top: 14px; font-family: var(--font-display); font-size: 1.15rem;
+    font-weight: 600; font-style: italic;
+  }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; margin-top: 64px; }
+  .footer-inner {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    justify-content: space-between; max-width: 780px; margin: 0 auto; padding: 0 24px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand p { font-size: 0.85rem; color: var(--ink-soft); max-width: 40ch; line-height: 1.5; }
+  .footer-links { display: flex; gap: 18px; font-size: 0.85rem; font-weight: 700; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: var(--ink); }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ---------- Page nav ---------- */
+  /* Every entry is a real page now, so the two-kinds-of-link problem is
+     gone with the single page it came from: no anchors, no outbound
+     marker, no "on this page" group. */
+  .nav-links a[aria-current="page"] { color: var(--ink); }
+  .nav-links a[aria-current="page"]::after {
+    content: ""; display: block; height: 2px; border-radius: 2px;
+    background: var(--accent); margin-top: 4px;
+  }
+  .nav-menu-panel a[aria-current="page"] {
+    background: var(--line-soft); color: var(--ink);
+  }
+
+  /* ---------- Page header, shared by every inner page ---------- */
+  /* Less bottom padding when the H1 stands alone, since the section that
+     follows brings its own headline. */
+  .page-head { padding: 64px 0 4px; }
+  .page-head h1 { font-size: clamp(2rem, 4.6vw, 2.8rem); font-weight: 600; line-height: 1.14; }
+  .page-head .page-sub {
+    margin-top: 18px; font-size: 1.08rem; color: var(--ink-soft); max-width: 62ch;
+  }
+
+  /* ---------- Next/prev, so a page is not a dead end ---------- */
+  .page-nav {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line);
+  }
+  .page-nav a {
+    display: flex; flex-direction: column; gap: 3px; text-decoration: none;
+    color: var(--ink); font-weight: 700; font-size: 0.98rem;
+  }
+  .page-nav span {
+    font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-soft); font-weight: 500;
+  }
+  .page-nav a:hover { color: var(--teal); }
+  .page-nav .next { text-align: right; margin-left: auto; }
+
+  /* ---------- Home: where to go next ---------- */
+  /* Exactly four cards, so the columns are stated rather than fitted:
+     auto-fit gave three across with the fourth stranded on its own row. */
+  .home-grid {
+    display: grid; gap: 16px; margin-top: 44px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 1040px) { .home-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px)  { .home-grid { grid-template-columns: 1fr; } }
+  .home-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--paper-raised); border: 1px solid var(--line);
+    border-radius: 14px; padding: 24px 26px; transition: border-color .15s, transform .15s;
+  }
+  .home-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .home-card h3 {
+    font-family: var(--font-display); font-size: 1.08rem; font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .home-card p { font-size: 0.93rem; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  .home-card .go {
+    display: inline-block; margin-top: 12px; font-size: 0.86rem;
+    font-weight: 700; color: var(--accent-text);
+  }
