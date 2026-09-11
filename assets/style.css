@@ -565,3 +565,63 @@
     display: inline-block; margin-top: 12px; font-size: 0.86rem;
     font-weight: 700; color: var(--accent-text);
   }
+
+  /* Sits directly under the opening paragraph, before the buttons, so who
+     made this is part of the first thing read rather than a footnote
+     after the calls to action. */
+  .hero-maker { margin-top: 16px; }
+  .hero-maker a { color: var(--teal); font-weight: 600; }
+
+  /* ---------- Screenshot gallery ---------- */
+  /* A row that scrolls with snap on a phone and becomes a grid when there
+     is room. No lightbox and no carousel script: the images are the point,
+     and a gallery that needs JavaScript to show them is a gallery that
+     shows nothing when it fails. */
+  .shots {
+    display: grid; gap: 18px; margin-top: 40px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .shot { margin: 0; display: flex; flex-direction: column; }
+  .shot img {
+    width: 100%; height: auto; display: block;
+    border-radius: 14px; border: 1px solid var(--line);
+    background: var(--card);
+    box-shadow: 0 18px 34px -20px rgba(0,0,0,0.45);
+  }
+  .shot figcaption {
+    margin-top: 14px; font-size: 0.86rem; line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .shot figcaption strong {
+    display: block; color: var(--ink); font-size: 0.93rem;
+    font-weight: 700; margin-bottom: 3px;
+  }
+
+  @media (max-width: 1040px) {
+    .shots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    /* Below this a grid makes each phone too small to read, so the row
+       scrolls instead and one screen fills most of the viewport. */
+    .shots {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      margin-left: -24px; margin-right: -24px;
+      padding: 4px 24px 8px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .shot { flex: 0 0 68%; scroll-snap-align: center; }
+  }
+
+  .shots-note {
+    margin-top: 36px; padding: 22px 26px;
+    background: var(--paper-raised); border: 1px solid var(--line);
+    border-left: 3px solid var(--teal); border-radius: 14px;
+  }
+  .shots-note p { color: var(--ink-soft); font-size: 0.96rem; max-width: 76ch; }
+  .shots-note strong { color: var(--ink); }
+
+  /* The email is a link inside footer prose, which is set in the muted
+     ink — it needs to be visibly a link without shouting. */
+  .footer-brand p a { color: var(--teal); font-weight: 600; }
