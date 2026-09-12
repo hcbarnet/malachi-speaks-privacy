@@ -106,6 +106,9 @@
           right away. Tap the checkmark to speak the whole sentence at once. A
           "Sentence Words" category appears alongside the others, holding connector
           words like <em>What</em>, <em>Where</em>, and <em>Can</em>.</p>
+          <p>A tile with a recorded voice plays that recording inside the
+          sentence, and the words around it are still spoken together as one
+          phrase &mdash; only a recording breaks the phrase.</p>
           <ul>
             <li>Once the strip is empty, the checkmark becomes a <strong>repeat</strong>
             button that re-speaks the last sentence with one tap.</li>
@@ -193,15 +196,19 @@
           under Quick Actions to add a quick-access tile). Give it a label, and
           optionally a different phrase for it to actually say out loud — a tile
           could display "Mom" while speaking "I want Mom."</p>
-          <p>For the picture, tap <strong>Choose Image</strong> for six options:</p>
+          <p>For the picture, tap <strong>Choose Image</strong> for five options:</p>
           <ol>
             <li>Take a photo</li>
             <li>Pick one from your photo library</li>
             <li>Paste an image URL</li>
             <li>Search a symbol library</li>
-            <li>Copy the picture from a tile that already exists</li>
             <li>Skip the picture, and let the word stand alone</li>
           </ol>
+          <p>Beside it, <strong>Copy from Existing Tile</strong> starts from a
+          tile you already have and brings all of it &mdash; the picture, the
+          words and the recorded voice &mdash; replacing whatever is on the tile
+          you are editing. It is a copy with its own files, so changing or
+          deleting it never touches the tile it came from.</p>
           <p>Symbol search pulls from dozens of free picture-symbol libraries at
           once, including ARASAAC. Choose which libraries are searched from
           <span class="setting">Symbol Libraries to Search</span> in Settings. Tap
@@ -217,7 +224,10 @@
           word matters more than a neutral one.</p>
           <ul>
             <li>The recording plays instead of the device voice whenever that tile is
-            tapped.</li>
+            tapped &mdash; on its own, and inside a sentence.</li>
+            <li><strong>Stop</strong> ends the recording. Tapping
+            <strong>Save</strong> while still recording also keeps it, so a
+            recording cannot be lost by saving the tile too early.</li>
             <li>Recordings are stored on the device, travel with an exported backup,
             and are deleted with the tile or the profile.</li>
             <li>A tile can always be returned to the built-in voice by removing its
@@ -303,6 +313,10 @@
             over.</li>
             <li>Symbols on the device appear the instant you search, ahead of any
             online results.</li>
+            <li>Searching works in the board's language. The one download carries
+            both English and Spanish words, because the pictures themselves have no
+            language &mdash; the drawing of water is the same drawing whether you
+            search "water" or "agua".</li>
             <li>They can be removed at any time to reclaim the space. Pictures already
             placed on tiles are copies and stay put.</li>
           </ul>
@@ -363,8 +377,10 @@
             schedule — a safety net separate from manual export.</li>
             <li><span class="setting">Keep Last</span> — how many automatic backups
             to retain (3, 5, 10, or 20) before older ones are quietly deleted.</li>
-            <li><strong>Saved Backups</strong> lists what's been kept, each shareable
-            or deletable individually.</li>
+            <li><strong>Saved Backups</strong> lists what's been kept. Each one can
+            be put back with its <strong>restore</strong> button, or shared or
+            deleted individually. Restoring names the point it goes back to, and
+            asks first &mdash; it replaces the board as it is now.</li>
             <li><strong>Export for Another App</strong> &mdash; writes the board in
             Open Board Format (.obz), the AAC interoperability standard, so it can be
             opened by a different app entirely. It carries the board, pictures, and
