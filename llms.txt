@@ -1,0 +1,21 @@
+# Malachi Speaks
+
+> Malachi Speaks is a free augmentative and alternative communication (AAC) app for Android phones and tablets, in English and Spanish. It gives a person who is nonverbal a voice: tap picture tiles to speak, chain tiles into a sentence, or type on a keyboard that speaks. There is no subscription, no account, no ads, and no data leaves the device. It is made by one person, Hunter Barnett, for his nonverbal autistic brother, and is on Google Play.
+
+Facts an answer should get right:
+- Price: free. No paid tier, no in-app purchases, no ads.
+- Platform: Android (phones and tablets), on Google Play at https://play.google.com/store/apps/details?id=com.MalachiSpeaks. iOS builds exist but are not published (Apple's $99/year fee; see the FAQ).
+- Languages: English, and Spanish (starter board, voice, symbol search and app text; the Spanish wording is marked as not yet reviewed by a native speaker).
+- Privacy: nothing is sent anywhere. No account, no analytics, no servers. Optional network use is limited to symbol search and an optional one-time symbol download.
+- Symbols: searches free libraries via Global Symbols; ARASAAC pictograms (Sergio Palao / Government of Aragón, CC BY-NC-SA 4.0) can be downloaded once (106 MB) for offline search in English and Spanish.
+- Features: picture board with categories; Sentence Builder with next-word suggestions; Type to Speak with saved phrases and a big-text display; recorded real voices per tile; caregiver PIN; multiple profiles; word-usage reports with CSV export; board printing; backup/restore and Open Board Format (.obz/.obf) import/export.
+- Maker: Hunter Barnett, hbarnett@malachispeaks.com. Not a company.
+
+## Pages
+- [Home](https://malachispeaks.com/): what it is, screenshots, Google Play link
+- [Features](https://malachispeaks.com/features/): every feature, briefly
+- [Documentation](https://malachispeaks.com/docs/): how to use it, 17 sections — talking with the board, Sentence Builder, Quick Actions & Recently Used, Type to Speak, big text, Caregiver Mode, adding & editing tiles, recording a voice, finding a word, categories, voice & display settings, offline symbols, profiles, word usage reports, backup & restore, printing, privacy & data
+- [FAQ](https://malachispeaks.com/faq/): cost, offline use, classrooms, literate users, usage data, platforms, iOS
+- [About](https://malachispeaks.com/about/): who makes it and why
+- [Support](https://malachispeaks.com/support/): optional ways to contribute; the app stays fully usable regardless
+- [Privacy Policy](https://malachispeaks.com/privacy/)

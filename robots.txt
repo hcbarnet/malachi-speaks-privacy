@@ -1,0 +1,8 @@
+# Malachi Speaks — malachispeaks.com
+# A free AAC app. Everything here is public documentation; crawl freely.
+
+User-agent: *
+Allow: /
+Disallow: /app/
+
+Sitemap: https://malachispeaks.com/sitemap.xml
