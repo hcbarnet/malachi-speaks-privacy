@@ -232,6 +232,13 @@
 
   .hero-note { margin-top: 20px; font-size: 0.86rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
 
+  /* Google's badge, unmodified per their guidelines. The PNG carries its own
+     transparent margin, so it is nudged left to line its visible edge up with
+     the buttons above it. 60px tall — their minimum is 40. */
+  .store-badge { display: inline-block; margin-top: 20px; margin-left: -12px; line-height: 0; }
+  .store-badge img { height: 60px; width: auto; }
+  .footer-legal { margin-top: 14px; font-size: 0.74rem; color: var(--ink-soft); }
+
   /* ---------- Hero screenshot ---------- */
   .board-mock {
     background: var(--card); border: 1px solid var(--line);
