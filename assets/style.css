@@ -232,11 +232,20 @@
 
   .hero-note { margin-top: 20px; font-size: 0.86rem; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
 
-  /* Google's badge, unmodified per their guidelines. The PNG carries its own
-     transparent margin, so it is nudged left to line its visible edge up with
-     the buttons above it. 60px tall — their minimum is 40. */
+  /* Both badges unmodified, per Google's and Apple's guidelines. Google's PNG
+     carries its own transparent margin, so it is nudged left to line its
+     visible edge up with the buttons above it, and set to 60px so the button
+     inside renders at 40. Apple's SVG has no such margin, so it is set to 40
+     directly — which is also Apple's minimum. The two buttons then read as the
+     same size, which is what Apple asks for when badges sit together. */
+  .store-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 20px; }
   .store-badge { display: inline-block; margin-top: 20px; margin-left: -12px; line-height: 0; }
+  .store-badges .store-badge { margin-top: 0; }
   .store-badge img { height: 60px; width: auto; }
+  .store-badge-apple { margin-left: 0; }
+  /* After the rule above, not before: same specificity, so source order is
+     what decides it. */
+  .store-badge-apple img { height: 40px; }
   .footer-legal { margin-top: 14px; font-size: 0.74rem; color: var(--ink-soft); }
 
   /* ---------- Hero screenshot ---------- */
